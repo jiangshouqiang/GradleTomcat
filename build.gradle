@@ -1,0 +1,39 @@
+group 'GradleTomcat'
+version '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+buildscript {
+    repositories {
+        jcenter()
+    }
+    dependencies {
+        classpath 'com.bmuschko:gradle-tomcat-plugin:2.2.4'
+//        classpath 'com.bmuschko:gradle-cargo-plugin:2.0.1'
+    }
+}
+apply plugin: 'java'
+apply plugin: 'com.bmuschko.tomcat'
+apply plugin: 'idea'
+//apply plugin: 'com.bmuschko.cargo'
+//apply plugin: 'com.bmuschko.cargo-base'
+
+dependencies {
+    def tomcatVersion = '6.0.29'
+    tomcat "org.apache.tomcat:catalina:${tomcatVersion}",
+            "org.apache.tomcat:coyote:${tomcatVersion}",
+            "org.apache.tomcat:jasper:${tomcatVersion}"
+}
+//cargo{
+//    containerId='tomcat6x'
+//    port=8080
+//    deployable{
+//        context='/'
+//    }
+//    remote{
+//        hostname='localhost'
+//        timeout=6000
+//    }
+//}
